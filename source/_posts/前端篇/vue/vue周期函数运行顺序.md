@@ -1,7 +1,6 @@
 ---
 title: vue周期函数运行顺序
-top_img: >-
-  https://raw.githubusercontent.com/jourFreedom/picbeds/main/blog_imgs/8ea16b280878493e8b07cd4f33c4b465_9b9b8903ca754025ae8507dbb805525a_thumb.jpg
+top_img: http://n.sinaimg.cn/sinacn20110/27/w1080h547/20190318/f136-hukwxnv0563014.png
 date: 2022-07-30 15:58:49
 updated: 2022-07-30 15:58:49
 tags:
@@ -11,7 +10,7 @@ categories:
 keywords:
 description:
 comments:
-cover: http://n.sinaimg.cn/sinacn20110/27/w1080h547/20190318/f136-hukwxnv0563014.png
+cover: 
 toc:
 toc_number:
 toc_style_simple:

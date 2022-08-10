@@ -1,7 +1,7 @@
 ---
 title: vue之vuex模块化管理
-top_img: >-
-  https://raw.githubusercontent.com/jourFreedom/picbeds/main/blog_imgs/8ea16b280878493e8b07cd4f33c4b465_9b9b8903ca754025ae8507dbb805525a_thumb.jpg
+top_img: 
+  https://s1.1zoom.me/b5050/610/350394-sepik_1920x1080.jpg
 date: 2022-07-30 16:11:18
 updated: 2022-07-30 16:11:18
 tags:

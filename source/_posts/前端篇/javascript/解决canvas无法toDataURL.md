@@ -1,7 +1,6 @@
 ---
 title: 解决canvas无法toDataURL
-top_img: >-
-  https://raw.githubusercontent.com/jourFreedom/picbeds/main/blog_imgs/8ea16b280878493e8b07cd4f33c4b465_9b9b8903ca754025ae8507dbb805525a_thumb.jpg
+top_img: 
 date: 2022-07-30 14:36:43
 updated: 2022-07-30 14:36:43
 tags:

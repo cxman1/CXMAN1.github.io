@@ -1,7 +1,6 @@
 ---
 title: vue之强制刷新组件
-top_img: >-
-  https://raw.githubusercontent.com/jourFreedom/picbeds/main/blog_imgs/8ea16b280878493e8b07cd4f33c4b465_9b9b8903ca754025ae8507dbb805525a_thumb.jpg
+top_img: https://www.wallpapertip.com/wmimgs/1-15387_hatsune-miku-full-hd.jpg
 date: 2022-07-30 15:59:27
 updated: 2022-07-30 15:59:27
 tags:
@@ -9,7 +8,7 @@ categories:
 keywords:
 description:
 comments:
-cover: https://www.wallpapertip.com/wmimgs/1-15387_hatsune-miku-full-hd.jpg
+cover: 
 toc:
 toc_number:
 toc_style_simple:

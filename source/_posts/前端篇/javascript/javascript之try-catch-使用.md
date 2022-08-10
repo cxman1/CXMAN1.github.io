@@ -1,7 +1,6 @@
 ---
 title: javascript之try...catch...使用
-top_img: 
-  https://raw.githubusercontent.com/jourFreedom/picbeds/main/blog_imgs/8ea16b280878493e8b07cd4f33c4b465_9b9b8903ca754025ae8507dbb805525a_thumb.jpg
+top_img:  http://cdn.wallpapername.com/1440x830/20121102/vocaloid%20hatsune%20miku%20love%20is%20war%20armbands%201440x830%20wallpaper_www.wallpapername.com_73.jpg
 date: 2022-07-30 16:06:25
 updated: 2022-07-30 16:06:25
 tags:

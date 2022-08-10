@@ -1,8 +1,7 @@
 ---
 title: 配置window策略组
-top_img: >-
-  https://raw.githubusercontent.com/jourFreedom/picbeds/main/blog_imgs/8ea16b280878493e8b07cd4f33c4b465_9b9b8903ca754025ae8507dbb805525a_thumb.jpg
-date: 2022-07-30 16:52:46
+top_img:  
+date: 2022-07-20 16:10:46
 updated: 2022-07-30 16:52:46
 tags:
 categories:

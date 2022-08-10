@@ -101,9 +101,9 @@ theme: butterfly
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
-deploy: 
+deploy:
   type: 'git'
-  repo: https://gitee.com/chenxicom/chenxicom.gitee.io.git
+  repo: https://github.com/cxman1/cxman1.github.io.git
   branch: master
 
 search:
@@ -116,34 +116,23 @@ search:
   meting: true
   asset_inject: false
 
-  douban:
-  user: /238034304/?_i=9897778GqdPm2_
-  builtin: true
-  # book:
-  #   title: 'This is my book title'
-  #   quote: 'This is my book quote'
-  #   meta: true
-  #   comments: true
-  #   top_img: https://img2.doubanio.com/icon/ul238034304-2.jpg
-  #   aside: true
-  #   path: books
-  #   limit:
-  movie:
-    title: '电影'
-    quote: '电影世界,深入其中'
-    meta: <meta name="referrer" content="no-referrer">
-    comments: true
-    top_img: https://img2.doubanio.com/icon/ul238034304-2.jpg
-    aside: true
-    path: movies
-    limit:
-  # game:
-  #   title: '游戏'
-  #   quote: '这是一场游戏'
-  #   meta: true
-  #   comments: true
-  #   top_img: https://img2.doubanio.com/icon/ul238034304-2.jpg
-  #   aside: true
-  #   path: games
-  #   limit:
-  timeout: 10000 
+live2d:
+  enable: true # 是否开启live2d
+  scriptFrom: local ## 脚本从本地引入
+  pluginRootPath: live2dw/ # 模型根目录(指hexo g后生成public\live2dw文件名)
+  pluginJsPath: lib/ # 依赖js的文件夹名(public\live2dw\lib)
+  pluginModelPath: assets/ # 模型存放目录(public\live2dw\assets)
+  tagMode: false # 标记模式(未知)
+  log: false # 日志
+  model: # 模型
+    use: live2d-widget-model-hibiki # 使用的模型名称
+  display: # 显示
+    position: right # 显示在右边(left显示在左边)
+    width: 150 # 宽度
+    height: 400 # 高度
+    hOffset: 100
+    vOffset: -30
+  mobile:
+    show: true # 手机端是否显示
+  # react:
+  #   opacity: 0.3 # 透明度

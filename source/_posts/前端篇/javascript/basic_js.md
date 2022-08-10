@@ -6,7 +6,7 @@ categories:
   - javascript
 tags:
   - Javascript
-cover: 
+top_img: https://images6.alphacoders.com/682/thumb-1920-682958.jpg
 abbrlink: 324dwer
 ---
 # Javascript基础语法
