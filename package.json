@@ -54,7 +54,7 @@
     "live2d-widget-model-shizuku": "^1.0.5",
     "live2d-widget-model-tsumiki": "^1.0.5",
     "live2d-widget-model-wanko": "^1.0.5",
-    "npm": "^8.16.0",
+    "npm": "^8.17.0",
     "valine": "^1.5.1"
   }
 }
