@@ -10,9 +10,11 @@ menu:
   休闲||放松:
     音乐: /music/ || fas fa-music
     电影: /movies/ || fas fa-video
+    动漫: /move/ || fa-solid fa-film
   留言板块: /guestbook/ || fa fa-book
   友情链接: /link/ || fas fa-link
   关于: /about/ || fas fa-heart
+ 
 
 # Code Blocks (代碼相關)
 # --------------------------------------
@@ -268,13 +270,14 @@ comments:
   # Up to two comments system, the first will be shown as default
   # Choose: Disqus/Disqusjs/Livere/Gitalk/Valine/Waline/Utterances/Facebook Comments/Twikoo/Giscus/Remark42
   use: 
-    - Valine
-  text: true # Display the comment name next to the button
+    - Livere
+  text: false # Display the comment name next to the button
   # lazyload: The comment system will be load when comment element enters the browser's viewport.
   # If you set it to true, the comment count will be invalid
   lazyload: true
   count: true # Display comment count in post's top_img
   card_post_count: true # Display comment count in Home Page
+  
 
 # disqus
 # https://disqus.com/
@@ -293,7 +296,8 @@ disqusjs:
 # livere (來必力)
 # https://www.livere.com/
 livere:
-  uid:
+  enable: true
+  uid: MTAyMC81NzAxMS8zMzQ3NQ==
 
 # gitalk
 # https://github.com/gitalk/gitalk
@@ -308,24 +312,31 @@ gitalk:
 # valine
 # https://valine.js.org
   # Valine 评论模块的配置，默认为不激活，如要使用，就请激活该配置项，并设置 appId 和 appKey.
-valine:
-  enable: true
-  appId: rKR4LCpf98eBbAKHwT39qUoF-MdYXbMMI
-  appKey: aNv2lboIfJYsz4zhX9aUP3UX
-  visitor: true
-  meta: ['nick','mail','link']
-  path: window.location.pathname 
-  # 默认头像展示方式，小怪物
-  avatar: wavatar
-  lang: zh-CN
-  pageSize: 10
-  # 评论区默认的语句
-  placeholder: "欢迎大家交流问题,会不定时的查看留言" # Comment Box placeholder
-  # 背景图
-  background: /img/初音未来11.jpg
-  comment_count: true
-  requiredFields: ['nick','mail']
-  emojiMaps: {}
+# valine:
+#   enable: true
+#   appId: rKR4LCpf98eBbAKHwT39qUoF-MdYXbMMI
+#   appKey: aNv2lboIfJYsz4zhX9aUP3UX
+#   visitor: true
+#   meta: ['nick','mail','link']
+#   path: window.location.pathname 
+#   # 默认头像展示方式，小怪物
+#   avatar: wavatar
+#   lang: zh-CN
+#   pageSize: 10
+#   notify: false # mail notifier, See: https://github.com/xCss/Valine/wiki
+#   verify: false # Verification code
+#   # 评论区默认的语句
+#   placeholder: "欢迎大家交流问题,会不定时的查看留言" # Comment Box placeholder
+#   # 背景图
+#   background: /img/初音未来11.jpg
+#   comment_count: true
+#   requiredFields: ['nick','mail']
+#   emojiMaps: {}
+#   https://rkr4lcpf.api.lncldglobal.com
+ 
+
+  
+ 
 
 # waline - A simple comment system with backend support fork from Valine
 # https://waline.js.org/

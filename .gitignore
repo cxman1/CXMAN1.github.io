@@ -2,7 +2,9 @@
 Thumbs.db
 db.json
 *.log
-node_modules/
-public/
+/node_modules
+public
 .deploy*/
 _multiconfig.yml
+/海贼王red.mp4
+

@@ -20,8 +20,8 @@ script.
   window.valine = new Valine({
     el:'#vcomment',
     master:'#{theme.valine.master}',
-    friends:'#{theme.valine.friends}',
-    appId: '#{theme.valine.appId}',
+    //- friends:'#{theme.valine.friends}',
+    //- appId: '#{theme.valine.appId}',
     appKey: '#{theme.valine.appKey}',
     placeholder: '#{theme.valine.placeholder}',
     avatar: '#{theme.valine.avatar}',
@@ -34,6 +34,7 @@ script.
     emojiMaps: !{emojiMaps},
     enableQQ: #{theme.valine.enableQQ},
     requiredFields: requiredFields,
+    serverURLs: '<%= theme.valine.serverURLs %>'，
     emojiMaps: {
               "1":"https://cdn.jsdelivr.net/gh/lete114/CDN/emoji/1.gif",
               "001":"https://cdn.jsdelivr.net/gh/lete114/CDN/emoji/001.png",
