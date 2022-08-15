@@ -1,0 +1,306 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Linux配置gitee的ssh | 陈曦BlogTour🎶</title><meta name="keywords" content="博客，陈曦"><meta name="author" content="陈曦BlogTour💕"><meta name="copyright" content="陈曦BlogTour💕"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="Gitee 提供了基于SSH协议的Git服务，在使用SSH协议访问仓库之前，需要先配置好账户&#x2F;仓库的SSH公钥。 你可以按如下命令来生成 sshkey: ssh-keygen -t ed25519 -C &quot;xxxxx@xxxxx.com&quot;  # Generating public&#x2F;private ed25519 key pair...   注意：这里的 &amp;#120;&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux配置gitee的ssh">
+<meta property="og:url" content="https://cxman1.github.io/2022/07/30/%E7%B3%BB%E7%BB%9F%E7%AF%87/Linux%E9%85%8D%E7%BD%AEgitee%E7%9A%84ssh/index.html">
+<meta property="og:site_name" content="陈曦BlogTour🎶">
+<meta property="og:description" content="Gitee 提供了基于SSH协议的Git服务，在使用SSH协议访问仓库之前，需要先配置好账户&#x2F;仓库的SSH公钥。 你可以按如下命令来生成 sshkey: ssh-keygen -t ed25519 -C &quot;xxxxx@xxxxx.com&quot;  # Generating public&#x2F;private ed25519 key pair...   注意：这里的 &amp;#120;&amp;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://9.share.photo.xuite.net/sjh2550/199f80e/18691738/1021940084_x.jpg">
+<meta property="article:published_time" content="2022-07-30T07:57:06.000Z">
+<meta property="article:modified_time" content="2022-07-30T07:57:06.000Z">
+<meta property="article:author" content="陈曦BlogTour💕">
+<meta property="article:tag" content="博客，陈曦">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://9.share.photo.xuite.net/sjh2550/199f80e/18691738/1021940084_x.jpg"><link rel="shortcut icon" href="https://i.ibb.co/zrR4XcJ/cy.png"><link rel="canonical" href="https://cxman1.github.io/2022/07/30/%E7%B3%BB%E7%BB%9F%E7%AF%87/Linux%E9%85%8D%E7%BD%AEgitee%E7%9A%84ssh/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 陈曦BlogTour💕","link":"链接: ","source":"来源: 陈曦BlogTour🎶","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Linux配置gitee的ssh',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2022-07-30 15:57:06'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/test.css"><link rel="stylesheet" href="/twikoo/twikoo_beautify.css"  media="defer" onload="this.media='all'"><meta name="generator" content="Hexo 6.2.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.ibb.co/hcyLmbS/cy.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">36</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw 放松"></i><span> 休闲</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/move/"><i class="fa-fw fa-solid fa-film"></i><span> 动漫</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/guestbook/"><i class="fa-fw fa fa-book"></i><span> 留言板块</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://raw.githubusercontent.com/jourFreedom/picbeds/main/blog_imgs/8ea16b280878493e8b07cd4f33c4b465_9b9b8903ca754025ae8507dbb805525a_thumb.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">陈曦BlogTour🎶</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw 放松"></i><span> 休闲</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/move/"><i class="fa-fw fa-solid fa-film"></i><span> 动漫</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/guestbook/"><i class="fa-fw fa fa-book"></i><span> 留言板块</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Linux配置gitee的ssh</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-07-30T07:57:06.000Z" title="发表于 2022-07-30 15:57:06">2022-07-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-07-30T07:57:06.000Z" title="更新于 2022-07-30 15:57:06">2022-07-30</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Linux%E7%AF%87/">Linux篇</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Linux配置gitee的ssh"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>Gitee 提供了基于SSH协议的Git服务，在使用SSH协议访问仓库之前，需要先配置好账户&#x2F;仓库的SSH公钥。</p>
+<p>你可以按如下命令来生成 sshkey:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t ed25519 -C <span class="string">&quot;xxxxx@xxxxx.com&quot;</span>  </span><br><span class="line"><span class="comment"># Generating public/private ed25519 key pair...</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：这里的 <a href="mailto:&#120;&#x78;&#x78;&#x78;&#x78;&#64;&#120;&#120;&#x78;&#x78;&#120;&#46;&#x63;&#x6f;&#109;">&#120;&#x78;&#x78;&#x78;&#x78;&#64;&#120;&#120;&#x78;&#x78;&#120;&#46;&#x63;&#x6f;&#109;</a> 只是生成的 sshkey 的名称，并不约束或要求具体命名为某个邮箱。<br>现网的大部分教程均讲解的使用邮箱生成，其一开始的初衷仅仅是为了便于辨识所以使用了邮箱。</p>
+</blockquote>
+<p>按照提示完成三次回车，即可生成 ssh key。通过查看 ~&#x2F;.ssh&#x2F;id_ed25519.pub 文件内容，获取到你的 public key</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> ~/.ssh/id_ed25519.pub</span><br><span class="line"><span class="comment"># ssh-ed25519 AAAAB3NzaC1yc2EAAAADAQABAAABAQC6eNtGpNGwstc....</span></span><br></pre></td></tr></table></figure>
+
+
+<p><a target="_blank" rel="noopener" href="http://www.ws865.com/wp-content/uploads/2022/03/676dd7f4d9cb1b9.png"><img src="http://www.ws865.com/wp-content/uploads/2022/03/676dd7f4d9cb1b9-1024x614.png" alt="ssh生成"></a></p>
+<p><a target="_blank" rel="noopener" href="http://www.ws865.com/wp-content/uploads/2022/03/10ea593baf29e6c.png"><img src="http://www.ws865.com/wp-content/uploads/2022/03/10ea593baf29e6c-1024x392.png" alt="公钥"></a></p>
+<p>复制生成后的 ssh key，通过仓库主页 <strong>「管理」-&gt;「部署公钥管理」-&gt;「添加部署公钥」</strong> ，添加生成的 public key 添加到仓库中。</p>
+<p>添加部署公钥</p>
+<p>添加后，在终端（Terminal）中输入</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -T git@gitee.com</span><br></pre></td></tr></table></figure>
+
+<p>首次使用需要确认并添加主机到本机SSH可信列表。若返回<code>Hi XXX! You&#39;ve successfully authenticated, but Gitee.com does not provide shell access.</code>内容，则证明添加成功。<br>如果连接超时，检查是不是修改了ssh的端口号。如果修改了ssh的端口号，ssh会默认使用修改后的端口访问<br><a target="_blank" rel="noopener" href="http://www.ws865.com/wp-content/uploads/2022/03/44ebe5c05cb1aed.png"><img src="http://www.ws865.com/wp-content/uploads/2022/03/44ebe5c05cb1aed.png" alt="连接超时"></a></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -v git@gitee.com</span><br><span class="line"><span class="comment"># connecting timed out</span></span><br></pre></td></tr></table></figure>
+<p>在<code>~/.ssh/</code>目录中添加config文件,在里面配置</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Hostname gitee.com </span><br><span class="line">Port [你的端口]`</span><br></pre></td></tr></table></figure>
+<p>或者在<code>/etc/ssh/ssh_config</code>中将 <code>Port 22</code>打开，这是访问外部时的端口号<br><code>/etc/ssh/sshd_config</code>中的<code>Port 224</code>这是访问机器的端口号<br>然后重启ssh服务<code>service restart ssh</code></p>
+<p>添加成功后，就可以使用SSH协议对仓库进行操作了。</p>
+<p><strong>切记，如果在此之前就添加了http的地址，请先删除远程地址，改用ssh地址</strong></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://cxman1.github.io">陈曦BlogTour💕</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://cxman1.github.io/2022/07/30/%E7%B3%BB%E7%BB%9F%E7%AF%87/Linux%E9%85%8D%E7%BD%AEgitee%E7%9A%84ssh/">https://cxman1.github.io/2022/07/30/%E7%B3%BB%E7%BB%9F%E7%AF%87/Linux%E9%85%8D%E7%BD%AEgitee%E7%9A%84ssh/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://cxman1.github.io" target="_blank">陈曦BlogTour🎶</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://9.share.photo.xuite.net/sjh2550/199f80e/18691738/1021940084_x.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/07/30/%E5%89%8D%E7%AB%AF%E7%AF%87/javascript/JavaScript%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%95%B0%E5%AD%97%E7%9A%845%E7%A7%8D%E6%96%B9%E6%B3%95%E5%8F%8A%E5%85%B6%E9%99%B7%E9%98%B1/"><img class="prev-cover" src="https://wallpapercave.com/wp/wp4077801.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">JavaScript字符串转数字的5种方法及其陷阱</div></div></a></div><div class="next-post pull-right"><a href="/2022/07/30/%E5%89%8D%E7%AB%AF%E7%AF%87/javascript/%E8%A7%A3%E5%86%B3canvas%E6%97%A0%E6%B3%95toDataURL/"><img class="next-cover" src="https://img.tt98.com/d/file/pic/20190910140264/5d6e3182e13b0.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">解决canvas无法toDataURL</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.ibb.co/hcyLmbS/cy.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">陈曦BlogTour💕</div><div class="author-info__description">欢迎访问小窝,Welcome to my blog😊</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">36</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/cxman1"><i class="fab fa-github"></i><span>关注</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/cxman1" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:13247579414@163.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://music.163.com/#/playlist?id=512748727" target="_blank" title="歌单"><i class="fa-solid fa-music"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的博客,平时分享一些资源,互相交流一下心得!上方的导航栏可以访问我分享的动漫、歌单、MV等资源......这里有我的联系方式QQ&WeChat:1969301206😶‍🌫️</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/08/10/%E5%B7%A5%E5%85%B7%E7%AF%87/ES6%E7%9A%84%E6%A8%A1%E5%9D%97%E5%8C%96/" title="ES6模块化语法"><img src="https://img.tt98.com/d/file/tt98/20200417150010422/5e9951277b82a.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ES6模块化语法"/></a><div class="content"><a class="title" href="/2022/08/10/%E5%B7%A5%E5%85%B7%E7%AF%87/ES6%E7%9A%84%E6%A8%A1%E5%9D%97%E5%8C%96/" title="ES6模块化语法">ES6模块化语法</a><time datetime="2022-08-09T17:05:16.000Z" title="发表于 2022-08-10 01:05:16">2022-08-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/30/%E5%89%8D%E7%AB%AF%E7%AF%87/%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0%E4%B9%8B%E6%9F%AF%E9%87%8C%E5%8C%96/" title="高阶函数之柯里化"><img src="https://s1.1zoom.me/big0/930/Vocaloid_Hatsune_Miku_450970.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="高阶函数之柯里化"/></a><div class="content"><a class="title" href="/2022/07/30/%E5%89%8D%E7%AB%AF%E7%AF%87/%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0%E4%B9%8B%E6%9F%AF%E9%87%8C%E5%8C%96/" title="高阶函数之柯里化">高阶函数之柯里化</a><time datetime="2022-07-30T08:34:13.000Z" title="发表于 2022-07-30 16:34:13">2022-07-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/30/%E5%89%8D%E7%AB%AF%E7%AF%87/vue/vue%E4%B9%8Bvuex%E6%A8%A1%E5%9D%97%E5%8C%96%E7%AE%A1%E7%90%86/" title="vue之vuex模块化管理"><img src="https://s1.1zoom.me/b5050/610/350394-sepik_1920x1080.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="vue之vuex模块化管理"/></a><div class="content"><a class="title" href="/2022/07/30/%E5%89%8D%E7%AB%AF%E7%AF%87/vue/vue%E4%B9%8Bvuex%E6%A8%A1%E5%9D%97%E5%8C%96%E7%AE%A1%E7%90%86/" title="vue之vuex模块化管理">vue之vuex模块化管理</a><time datetime="2022-07-30T08:11:18.000Z" title="发表于 2022-07-30 16:11:18">2022-07-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/30/%E5%89%8D%E7%AB%AF%E7%AF%87/javascript/javascript%E4%B9%8Btry-catch-%E4%BD%BF%E7%94%A8/" title="javascript之try...catch...使用"><img src="http://cdn.wallpapername.com/1440x830/20121102/vocaloid%20hatsune%20miku%20love%20is%20war%20armbands%201440x830%20wallpaper_www.wallpapername.com_73.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="javascript之try...catch...使用"/></a><div class="content"><a class="title" href="/2022/07/30/%E5%89%8D%E7%AB%AF%E7%AF%87/javascript/javascript%E4%B9%8Btry-catch-%E4%BD%BF%E7%94%A8/" title="javascript之try...catch...使用">javascript之try...catch...使用</a><time datetime="2022-07-30T08:06:25.000Z" title="发表于 2022-07-30 16:06:25">2022-07-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/30/%E5%89%8D%E7%AB%AF%E7%AF%87/javascript/vue%E4%B9%8B%E8%A7%A3%E6%9E%90Excel%E8%A1%A8%E6%A0%BC/" title="vue之解析Excel表格"><img src="https://s1.1zoom.me/big0/486/372822-blackangel.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="vue之解析Excel表格"/></a><div class="content"><a class="title" href="/2022/07/30/%E5%89%8D%E7%AB%AF%E7%AF%87/javascript/vue%E4%B9%8B%E8%A7%A3%E6%9E%90Excel%E8%A1%A8%E6%A0%BC/" title="vue之解析Excel表格">vue之解析Excel表格</a><time datetime="2022-07-30T08:05:50.000Z" title="发表于 2022-07-30 16:05:50">2022-07-30</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By 陈曦BlogTour💕</div><div class="footer_custom_text">开启博客之旅,记录美好生活😊</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'cloudbase-baas-0gnz9jp6790703e1',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'cloudbase-baas-0gnz9jp6790703e1',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    GLOBAL_CONFIG_SITE.isPost && getCount()
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><div class="aplayer no-destroy" data-id="60198" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="false" data-theme:"#A6FFFF"> </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"right","width":150,"height":400,"hOffset":100,"vOffset":-30},"mobile":{"show":true}});</script></body></html>

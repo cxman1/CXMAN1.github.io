@@ -1,0 +1,687 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>ES6模块化语法 | 陈曦BlogTour🎶</title><meta name="keywords" content="博客，陈曦"><meta name="author" content="陈曦BlogTour💕"><meta name="copyright" content="陈曦BlogTour💕"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="1. ES6 模块化1.1 回顾：node.js 模块化 node.js 遵循了 CommonJS 的模块化规范。其中：  导入其它模块使用 require() 方法 模块对外共享成员使用 module.exports  对象  模块化的好处： 大家都遵守同样的模块化规范写代码，降低了沟通的成本，极大方便了各个模块之间的相互调用，利人利己。 1.2 前端模块化的分类 (了解)在 ES6 模块化规范">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6模块化语法">
+<meta property="og:url" content="https://cxman1.github.io/2022/08/10/%E5%B7%A5%E5%85%B7%E7%AF%87/ES6%E7%9A%84%E6%A8%A1%E5%9D%97%E5%8C%96/index.html">
+<meta property="og:site_name" content="陈曦BlogTour🎶">
+<meta property="og:description" content="1. ES6 模块化1.1 回顾：node.js 模块化 node.js 遵循了 CommonJS 的模块化规范。其中：  导入其它模块使用 require() 方法 模块对外共享成员使用 module.exports  对象  模块化的好处： 大家都遵守同样的模块化规范写代码，降低了沟通的成本，极大方便了各个模块之间的相互调用，利人利己。 1.2 前端模块化的分类 (了解)在 ES6 模块化规范">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.tt98.com/d/file/tt98/20200417150010422/5e9951277b82a.jpg">
+<meta property="article:published_time" content="2022-08-09T17:05:16.000Z">
+<meta property="article:modified_time" content="2022-08-10T05:10:10.000Z">
+<meta property="article:author" content="陈曦BlogTour💕">
+<meta property="article:tag" content="博客，陈曦">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.tt98.com/d/file/tt98/20200417150010422/5e9951277b82a.jpg"><link rel="shortcut icon" href="https://i.ibb.co/zrR4XcJ/cy.png"><link rel="canonical" href="https://cxman1.github.io/2022/08/10/%E5%B7%A5%E5%85%B7%E7%AF%87/ES6%E7%9A%84%E6%A8%A1%E5%9D%97%E5%8C%96/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 陈曦BlogTour💕","link":"链接: ","source":"来源: 陈曦BlogTour🎶","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'ES6模块化语法',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-08-10 13:10:10'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/test.css"><link rel="stylesheet" href="/twikoo/twikoo_beautify.css"  media="defer" onload="this.media='all'"><meta name="generator" content="Hexo 6.2.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.ibb.co/hcyLmbS/cy.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">36</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw 放松"></i><span> 休闲</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/move/"><i class="fa-fw fa-solid fa-film"></i><span> 动漫</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/guestbook/"><i class="fa-fw fa fa-book"></i><span> 留言板块</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://img.tt98.com/d/file/tt98/20200417150010422/5e9951277b82a.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">陈曦BlogTour🎶</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw 放松"></i><span> 休闲</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/move/"><i class="fa-fw fa-solid fa-film"></i><span> 动漫</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/guestbook/"><i class="fa-fw fa fa-book"></i><span> 留言板块</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">ES6模块化语法</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-08-09T17:05:16.000Z" title="发表于 2022-08-10 01:05:16">2022-08-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-08-10T05:10:10.000Z" title="更新于 2022-08-10 13:10:10">2022-08-10</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%A8%A1%E5%9D%97%E7%B1%BB/">模块类</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="ES6模块化语法"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="1-ES6-模块化"><a href="#1-ES6-模块化" class="headerlink" title="1. ES6 模块化"></a>1. ES6 模块化</h2><p>1.1 回顾：node.js 模块化</p>
+<p>node.js 遵循了 CommonJS 的模块化规范。其中：</p>
+<ul>
+<li>导入其它模块使用 require() 方法</li>
+<li>模块对外共享成员使用 module.exports  对象</li>
+</ul>
+<p>模块化的好处：</p>
+<p>大家都遵守同样的模块化规范写代码，降低了沟通的成本，极大方便了各个模块之间的相互调用，利人利己。</p>
+<h2 id="1-2-前端模块化的分类-了解"><a href="#1-2-前端模块化的分类-了解" class="headerlink" title="1.2 前端模块化的分类 (了解)"></a>1.2 前端模块化的分类 (了解)</h2><p>在 ES6 模块化规范诞生之前，JavaScript 社区已经尝试并提出了 AMD (国外 requirejs)、CMD (国内 seajs 淘宝)、CommonJS (nodejs) 等模块化规范</p>
+<p>但是，这些由社区提出的模块化标准，还是存在一定的差异性与局限性、并不是浏览器与服务器通用的模块化标准</p>
+<p>例如:</p>
+<ul>
+<li>AMD 和 CMD 适用于浏览器端的 Javascript 模块化</li>
+<li>CommonJS 适用于服务器端的 Javascript 模块化</li>
+</ul>
+<p>太多的模块化规范给开发者增加了学习的难度与开发的成本。因此，大一统的  ES6 模块化  规范诞生了！</p>
+<h2 id="1-3-什么是-ES6-模块化规范-统一"><a href="#1-3-什么是-ES6-模块化规范-统一" class="headerlink" title="1.3 什么是 ES6 模块化规范 (统一)"></a>1.3 什么是 ES6 模块化规范 (统一)</h2><p>ES6 模块化规范是浏览器端与服务器端通用的模块化开发规范。</p>
+<p>它的出现极大的降低了前端开发者的模块化学习成本，开发者不需再额外学习 AMD、CMD 或 CommonJS 等模块化规范</p>
+<p>ES6 模块化规范中定义：</p>
+<ul>
+<li>每个 js 文件都是一个独立的模块</li>
+<li>导入其它模块成员使用 import  关键字</li>
+<li>向外共享模块成员使用 export 关键字</li>
+</ul>
+<p>1.4 在 node.js 中体验 ES6 模块化</p>
+<p>node.js 中默认仅支持 CommonJS 模块化规范，若想基于 node.js 体验与学习 ES6 的模块化语法，</p>
+<p>可以按照如下两个步骤进行配置：</p>
+<ol>
+<li>确保安装了 v14.15.1 或更高版本的 node.js</li>
+<li>在 package.json 的根节点中添加 “type”: “module” 节点</li>
+</ol>
+<h2 id="1-5-模块化的基本语法"><a href="#1-5-模块化的基本语法" class="headerlink" title="1.5 模块化的基本语法"></a>1.5 模块化的基本语法</h2><p>ES6 的模块化主要包含如下 3 种用法：</p>
+<ul>
+<li>默认导出 和 默认导入</li>
+<li>按需导出 和 按需导入</li>
+<li>直接导入 并 执行模块中的代码</li>
+</ul>
+<p>1.5.1 默认导出 和 默认导入</p>
+<p>默认导出的语法： export default 默认导出的成员</p>
+<p>默认导入的语法： import 接收名称 from ‘模块标识符’</p>
+<p>默认导出</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">const a = 10</span><br><span class="line">const b = 20</span><br><span class="line"></span><br><span class="line">const fn  = () =&gt; &#123;</span><br><span class="line">  console.log(&#x27;这是一个函数&#x27;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 默认导出</span><br><span class="line">// export default a  // 导出一个值</span><br><span class="line">export default &#123;</span><br><span class="line">  a,</span><br><span class="line">  b,</span><br><span class="line">  fn</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>默认导入</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import result from &#x27;./xxx.js&#x27;</span><br><span class="line">console.log(result)</span><br></pre></td></tr></table></figure>
+<p>注意点: </p>
+<ul>
+<li>每个模块中，只允许使用唯一的一次 export default !</li>
+<li>默认导入时的接收名称可以任意名称，只要是合法的成员名称即可</li>
+</ul>
+<h2 id="1-5-2-按需导入与按需导出"><a href="#1-5-2-按需导入与按需导出" class="headerlink" title="1.5.2 按需导入与按需导出"></a>1.5.2 按需导入与按需导出</h2><p>按需导出的语法： export const a &#x3D; 10</p>
+<p>按需导入的语法： import { a } from ‘模块标识符’</p>
+<p>按需导出</p>
+<pre><code>export const a = 10
+export const b = 20
+export const fn = () =&gt; &#123;
+  console.log(&#39;内容&#39;)
+&#125;
+</code></pre>
+<p>按需导入</p>
+<pre><code>import &#123; a, b as c, fn &#125; from &#39;./xxx.js&#39;
+</code></pre>
+<p>注意点:</p>
+<ul>
+<li>每个模块中可以使用多次按需导出</li>
+<li>按需导入的成员名称必须和按需导出的名称保持一致</li>
+<li>按需导入时，可以使用as 关键字进行重命名</li>
+<li>按需导入可以和默认导入一起使用</li>
+</ul>
+<p>1.5.3 直接导入执行模块代码</p>
+<p>如果只想单纯地执行某个模块中的代码，并不需要得到模块中向外共享的成员。</p>
+<p>此时，可以直接导入并执行模块代码</p>
+<pre><code>import &#39;./xxx.js&#39;
+</code></pre>
+<h2 id="2-前置-yarn-包管理器"><a href="#2-前置-yarn-包管理器" class="headerlink" title="2. 前置 - yarn 包管理器"></a>2. 前置 - yarn 包管理器</h2><p>快速、可靠、安全的依赖管理工具。和 npm 类似, 都是包管理工具, 可以用于下载包 </p>
+<pre><code>npm i jquery
+</code></pre>
+<p>下载地址: <a target="_blank" rel="noopener" href="https://yarn.bootcss.com/docs/install/#windows-stable">https://yarn.bootcss.com/docs/install/#windows-stable</a> </p>
+<p>windows本  推荐通过软件包  安装 (教学资料中)</p>
+<pre><code>npm i yarn -g
+</code></pre>
+<p>mac本通过命令全局安装</p>
+<pre><code>sudo npm i yarn -g
+</code></pre>
+<p>基本命令:</p>
+<pre><code>1. 初始化
+    yarn init  /  yarn init -y
+
+2. 添加依赖
+    yarn add [package]
+    yarn add [package]@[version]
+
+3. 移除包
+    yarn remove [package]
+             
+4. 安装项目全部依赖            
+    yarn 或者 yarn install
+
+5. 全局
+    安装: yarn global add [package]
+    卸载: yarn global remove [package]
+</code></pre>
+<h2 id="3-webpack概述"><a href="#3-webpack概述" class="headerlink" title="3. webpack概述"></a>3. webpack概述</h2><p>webpack 是一个基于 NodeJS 的 静态模块打包器 (module bundler)</p>
+<p>将来要学的 vue-cli 脚手架环境, 集成了 webpack, 所以才能对各类文件进行打包处理 </p>
+<p>webpack官网</p>
+<p>3.1 webpack 能做什么</p>
+<p>webpack是一个 静态模块 打包器</p>
+<ol>
+<li>语法转换<ul>
+<li>less&#x2F;sass转换成css</li>
+<li>ES6转换成ES5</li>
+<li>typescript转换成原生js</li>
+<li>…</li>
+</ul>
+</li>
+<li>html&#x2F;css&#x2F;js 代码压缩合并 (打包)</li>
+<li>webpack可以在开发期间提供一个开发服务器， 提高开发效率</li>
+</ol>
+<p>项目一般先打包再上线</p>
+<h2 id="3-2-webpack-基本使用"><a href="#3-2-webpack-基本使用" class="headerlink" title="3.2 webpack - 基本使用"></a>3.2 webpack - 基本使用</h2><p>注意: 文档有可能不全的, 先按照我们笔记步骤, 先配置, 先上手</p>
+<p>以后开发: 对着官网, 对着博客, 去配 (博客的时间, 找近几年的)</p>
+<p><a target="_blank" rel="noopener" href="https://webpack.docschina.org/">https://webpack.docschina.org/</a></p>
+<h2 id="3-3-webpack-打包演示"><a href="#3-3-webpack-打包演示" class="headerlink" title="3.3 webpack 打包演示"></a>3.3 webpack 打包演示</h2><ol>
+<li>建目录  dist    src&#x2F;main.js</li>
+<li>初始化<br>yarn init -y</li>
+<li>安装依赖包  ( -D: 将安装包作为开发阶段的依赖, 只在开发阶段使用, 实际上线不要的, 可以加 -D)<br>dependencies  项目依赖, 实际上线, 也要用的包, 比如 jquery    yarn add jquery<br>devDependencies 开发依赖, 实际上线, 不用这个包, 只在开发打包过程中用   -D<br>yarn add webpack  webpack-cli  -D</li>
+<li>配置scripts<br>scripts: {<br>    “build”: “webpack –config webpack.config.js”<br>}<br>–config  webpack.config.js 这个配置文件名为默认值, 不加也会默认找这个文件</li>
+<li>提供 webpack.config.js<br>基础版本<br>module.exports &#x3D; {<br>  &#x2F;&#x2F; 入口: 从哪个文件开始打包<br>  entry: ‘.&#x2F;src&#x2F;main.js’<br>}</li>
+<li>执行脚本<br>yarn build</li>
+</ol>
+<p>小测试:</p>
+<pre><code>假定在main.js中导入一个  aa.js,  多个文件需要打包, wepack会打包成一个文件, 可以节约请求的次数
+
+import &#39;./js/aa.js&#39;
+console.log(&#39;这是main模块&#39;)
+</code></pre>
+<h2 id="3-4-package-json-中-scripts的使用说明"><a href="#3-4-package-json-中-scripts的使用说明" class="headerlink" title="3.4 package.json 中 scripts的使用说明"></a>3.4 package.json 中 scripts的使用说明</h2><p>在package.json文件中, 可以配置 scripts …  配置自己的命令</p>
+<pre><code>&quot;scripts&quot;: &#123;
+    &quot;pp&quot;: &quot;yarn add jquery&quot;,
+    &quot;build&quot;: &quot;webpack --config webpack.config.js&quot;
+&#125;
+
+yarn xxx
+npm run pp
+npm run build
+</code></pre>
+<p>运行方式:  npm  run  xx</p>
+<p>特殊的命令:  start &#x2F; stop  可以省略 run</p>
+<pre><code>npm run start  =&gt; npm start      =&gt;  yarn start
+npm run stop  =&gt; npm stop        =&gt;  yarn stop
+</code></pre>
+<p>使用 yarn 直接不需要加 run  </p>
+<pre><code>npm run pp  =&gt;  yarn pp
+npm run build =&gt; yarn build
+</code></pre>
+<h2 id="3-5-基本配置-配置入口出口模式"><a href="#3-5-基本配置-配置入口出口模式" class="headerlink" title="3.5 基本配置 - 配置入口出口模式"></a>3.5 基本配置 - 配置入口出口模式</h2><p>参考文档:   <a target="_blank" rel="noopener" href="https://webpack.docschina.org/concepts/#%E5%85%A5%E5%8F%A3-entry-">https://webpack.docschina.org/concepts/#入口-entry-</a> </p>
+<pre><code>const path = require(&#39;path&#39;)
+
+module.exports = &#123;
+  // entry: 配置入口文件 (从哪个文件开始打包) 
+  entry: &#39;./src/main.js&#39;,
+
+  // output: 配置输出 (打包到哪去)
+  output: &#123;
+    // 打包输出的目录 (必须是绝对路径)
+    path: path.join(__dirname, &#39;dist&#39;),
+    // 打包生成的文件名
+    filename: &#39;bundle.js&#39;
+  &#125;,
+
+  // 打包模式 production 压缩/development 不压缩
+  mode: &#39;development&#39;
+&#125;
+</code></pre>
+<p>重新 yarn build 打包</p>
+<p>3.6 基于 webpack 实现隔行变色</p>
+<p>需求: 使用 jquery 隔行变色</p>
+<ol>
+<li><p>新建  public&#x2F;index.html 编写代码</p>
+</li>
+<li><p>在 index.html 中新建一些 li 玩玩</p>
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+ </head>
+ <body>
+ 
+ <div id="app">
+   <!-- ul>li{我是第$个li}*10 -->
+   <ul>
+     <li>我是第1个li</li>
+     <li>我是第2个li</li>
+     <li>我是第3个li</li>
+     <li>我是第4个li</li>
+     <li>我是第5个li</li>
+     <li>我是第6个li</li>
+     <li>我是第7个li</li>
+     <li>我是第8个li</li>
+     <li>我是第9个li</li>
+   </ul>
+ </div>
+ 
+ </body>
+ </html>
+</li>
+<li><p>安装jquery， 编写代码</p>
+<p> yarn add jquery</p>
+</li>
+</ol>
+<p>main.js</p>
+<pre><code>// 需求: 通过jquery实现隔行变色
+import $ from &#39;jquery&#39;
+$(function() &#123;
+  $(&#39;#app li:nth-child(odd)&#39;).css(&#39;color&#39;, &#39;red&#39;)
+  $(&#39;#app li:nth-child(even)&#39;).css(&#39;color&#39;, &#39;green&#39;)
+&#125;)
+</code></pre>
+<ol>
+<li><p>执行打包命令</p>
+<p> yarn build</p>
+</li>
+<li><p>将 public&#x2F;index.html 手动拷贝到 dist 目录， 手动引入打包后的 js</p>
+ <script src="./bundle.js"></script></li>
+</ol>
+<p>3.7 webpack - 插件 和 loaders的配置</p>
+<p>3.7.1 自动生成html - html-webpack-plugin 插件</p>
+<p>每次都要将 public&#x2F;index.html 手动拷贝到 dist 目录， 手动引入打包后的 js， 太麻烦</p>
+<p>所以一般会用一个插件, 会自动拷贝到 dist下, 并自动引入</p>
+<ol>
+<li>下载<br>yarn add html-webpack-plugin  -D</li>
+<li>在webpack.config.js文件中，引入这个模块 :<br>&#x2F;&#x2F; 引入自动生成 html 的插件<br>const HtmlWebpackPlugin &#x3D; require(‘html-webpack-plugin’)</li>
+<li>配置<br>plugins: [<br>  new HtmlWebpackPlugin({ template: ‘.&#x2F;public&#x2F;index.html’ })<br>]</li>
+</ol>
+<p>配置好了之后, public 目录的 index.html 就不需要引入打包后的文件了, 会自动被插件生成 html 引入</p>
+<p>public&#x2F;index.html</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;
+  &lt;title&gt;Document&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;div id=&quot;app&quot;&gt;
+  &lt;!-- ul&gt;li&#123;我是第$个li&#125;*10 --&gt;
+  &lt;ul&gt;
+    &lt;li&gt;我是第1个li&lt;/li&gt;
+    &lt;li&gt;我是第2个li&lt;/li&gt;
+    &lt;li&gt;我是第3个li&lt;/li&gt;
+    &lt;li&gt;我是第4个li&lt;/li&gt;
+    &lt;li&gt;我是第5个li&lt;/li&gt;
+    &lt;li&gt;我是第6个li&lt;/li&gt;
+    &lt;li&gt;我是第7个li&lt;/li&gt;
+    &lt;li&gt;我是第8个li&lt;/li&gt;
+    &lt;li&gt;我是第9个li&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;!-- 打包后的文件会被自动引入, 不需要手动引入了 --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2 id="3-7-2-webpack中处理-css-文件-css-loader"><a href="#3-7-2-webpack中处理-css-文件-css-loader" class="headerlink" title="3.7.2 webpack中处理 css 文件 - css-loader"></a>3.7.2 webpack中处理 css 文件 - css-loader</h2><p>webpack默认只认识 js 文件和 json文件, 但是webpack 可以使用 loader 来加载预处理文件, 允许webpack也可以打包 js之外的静态资源。</p>
+<p>所以webpack如果要处理其他文件类型, 记得要先配置对应的 loader</p>
+<p>需求: 去掉小圆点, 新建 css 目录</p>
+<ol>
+<li>安装依赖<br>yarn add style-loader css-loader -D</li>
+<li>配置<br>module: {<br>  &#x2F;&#x2F; loader的规则<br>  rules: [<br>    {<br>      &#x2F;&#x2F; 正则表达式，用于匹配所有的css文件<br>      test: &#x2F;.css$&#x2F;,<br>      &#x2F;&#x2F; 先用 css-loader 让webpack能够识别 css 文件的内容<br>      &#x2F;&#x2F; 再用 style-loader 将样式, 以动态创建style标签的方式添加到页面中去<br>      use: [ “style-loader”, “css-loader”]<br>    }<br>  ]<br>},</li>
+</ol>
+<p>3.7.3 分离 css 文件 mini-css-extract-plugin</p>
+<p>我们上面的操作，使得css和js文件混杂在一起了，那有没有什么办法把css分离出来呢？ </p>
+<p>插件: mini-css-extract-plugin</p>
+<ol>
+<li><p>安装依赖包<br>yarn add mini-css-extract-plugin -D</p>
+</li>
+<li><p>在webpack.config.js文件中，引入这个模块<br>&#x2F;&#x2F; 引入分离 css 文件的 模块<br>const MiniCssExtractPlugin &#x3D; require(‘mini-css-extract-plugin’)</p>
+</li>
+<li><p>配置loaders<br>&#x2F;&#x2F; 模块加载<br>module: {<br>  &#x2F;&#x2F; loader的规则<br>  rules: [<br>    &#x2F;&#x2F; 配置 css 文件的解析<br>    {<br>      test: &#x2F;.css$&#x2F;,<br>      use: [ &#x2F;&#x2F; 根据官方文档写的，注意’css-loader’的书写位置<br>        MiniCssExtractPlugin.loader,<br>        ‘css-loader’<br>      ]<br>    },<br>  ],<br>}</p>
+</li>
+<li><p>插件的配置<br>plugins: [<br>  new HtmlWebpackPlugin({ template: ‘.&#x2F;public&#x2F;index.html’ }),<br><br>  &#x2F;&#x2F; 定义打包好的文件的存放路径和文件名<br>  new MiniCssExtractPlugin({<br>         filename:’css&#x2F;index.css’<br>  })<br><br>],</p>
+</li>
+</ol>
+<p>3.7.4 webpack 中处理 less - less-loader</p>
+<ol>
+<li><p>下载依赖包<br>注意: 解析less文件需要识别 less 语法, 所以除了 less-loader  需要额外下载 less 包<br>less-loader: 将less转换成 css<br>yarn add less  less-loader  -D</p>
+</li>
+<li><p>配置<br>&#x2F;&#x2F; 配置 less 文件的解析<br>{<br>  test: &#x2F;.less$&#x2F;,<br>  use: [<br>    &#x2F;&#x2F; 分离出 css 内容<br>    MiniCssExtractPlugin.loader,<br>    ‘css-loader’,<br>    ‘less-loader’<br>  ]<br>}</p>
+</li>
+</ol>
+<p>3.7.5 webpack 中处理图片 - 内置的 asset module</p>
+<p>我们试了一下，在项目中使用一下 img 图片。结果就报错了，难道webpack连图片也认不出来吗？</p>
+<pre><code>import imgObj from &#39;./imgs/01.jpg&#39;
+
+$(function() &#123;
+  const $img = $(&#39;&lt;img&gt;&#39;)
+  $img.attr(&#39;src&#39;, imgObj)
+  $(&#39;#app .header&#39;).append($img)
+&#125;)
+</code></pre>
+<p>没有错，的确认不出来,   此时需要用webpack5 内置的 asset 资源处理模块，来处理图片资源。</p>
+<p>webpack5 处理资源： <a target="_blank" rel="noopener" href="https://webpack.docschina.org/guides/asset-modules/">https://webpack.docschina.org/guides/asset-modules/</a></p>
+<p>tips: webpack4 中来处理图片的问题,  主要用到 url-loader  和   file-loader 两个模块， 现 webpack5 已集成，无需安装。</p>
+<p>配置 rules 基本规则： </p>
+<pre><code>&#123;
+  test: /\.(png|jpg|gif|jpeg)$/i,
+  type: &#39;asset&#39;
+&#125;
+</code></pre>
+<p>（1）对于小于 8k 的图片，会自动转 base64 字符串（节约请求次数，成本：放大约30%的图片体积大小）</p>
+<p>（2）对于大于 8k 的图片，会生成单独文件引入。</p>
+<p>配置图片的打包输出目录：</p>
+<p>默认是直接输出到了 dist 根目录, 可以通过  generator  进行配置</p>
+<pre><code>&#123;
+  test: /\.(png|jpg|gif|jpeg)$/i,
+  type: &#39;asset&#39;,
+  generator: &#123;
+    filename: &#39;images/[hash][name][ext]&#39;
+  &#125;
+&#125;
+</code></pre>
+<p>3.8 webpack 配置字体图标 - 和图片一致</p>
+<p>字体图标 和 图片的配置一致</p>
+<pre><code>// 处理字体图标的解析
+&#123;
+  test: /\.(eot|svg|ttf|woff|woff2)$/,
+  type: &#39;asset&#39;,
+  generator: &#123;
+    filename: &#39;fonts/[hash][ext]&#39;
+  &#125;
+&#125;
+</code></pre>
+<h2 id="3-9-webpack-使用-babel-处理高版本的-js-语法"><a href="#3-9-webpack-使用-babel-处理高版本的-js-语法" class="headerlink" title="3.9 webpack 使用 babel 处理高版本的 js 语法"></a>3.9 webpack 使用 babel 处理高版本的 js 语法</h2><p>webpack 默认仅内置了 模块化的 兼容性处理   import  export</p>
+<p>babel 的介绍 &#x3D;&gt; 用于处理高版本 js语法 的兼容性</p>
+<ol>
+<li><p>安装包<br>yarn add -D babel-loader @babel&#x2F;core @babel&#x2F;preset-env</p>
+</li>
+<li><p>配置规则<br>module: {<br>  rules: [<br>    {<br>      test: &#x2F;.js$&#x2F;,<br>      exclude: &#x2F;(node_modules|bower_components)&#x2F;,<br>      use: {<br>        loader: ‘babel-loader’,<br>        options: {<br>          presets: [‘@babel&#x2F;preset-env’]<br>        }<br>      }<br>    }<br>  ]<br>}</p>
+</li>
+<li><p>webpack - Source Map</p>
+</li>
+</ol>
+<h2 id="4-1-什么是Source-Map"><a href="#4-1-什么是Source-Map" class="headerlink" title="4.1 什么是Source Map?"></a>4.1 什么是Source Map?</h2><p>Source Map 就是一个信息文件，里面储存着位置信息。</p>
+<p>也就是说，Source Map 文件中存储着代码压缩混淆前后的对应关系。有了它，出错的时候，除错工具将直接显示原始代码，而不是转换后的代码，能够极大的方便后期的调试。</p>
+<p>4.2 开发环境下的 Source Map?</p>
+<p>在开发环境下，webpack 默认启用了 Source Map 功能。当程序运行出错时，可以直接在控制台提示错误行的位置，并定位到具体的源代码, 但错误行数有时会对不上:</p>
+<p>需要配置:</p>
+<pre><code>// eval-source-map 仅限在&quot;开发模式&quot;下使用, 不建议在&quot;生产模式&quot;下使用
+// 此选项生产的Source Map能够保证&quot;运行时报错的行数&quot;与&quot;源代码的行数&quot;保持一直
+// devtool: &#39;eval-source-map&#39;,
+devtool: &#39;eval-source-map&#39;
+</code></pre>
+<p>4.3 生产环境下的 Source Map?</p>
+<p>在生产环境下，如果没有配置devtool 选项，则最终生成的文件中不启用Source Map功能。这能够防止原始代码通过Source Map 的形式暴露给别有所图之人。</p>
+<p>需求:  在生产环境下，只想定位报错的具体行数，但不想暴露源码。主要是方便快速定位到bug, 快速修复!</p>
+<p>此时可以配置:</p>
+<pre><code>devtool: &#39;nosources-source-map&#39;
+</code></pre>
+<p>实际效果如图所示：</p>
+<h2 id="4-4-Source-Map-的最佳实践"><a href="#4-4-Source-Map-的最佳实践" class="headerlink" title="4.4 Source Map 的最佳实践"></a>4.4 Source Map 的最佳实践</h2><ul>
+<li><p>开发环境下：<br>建议把 devtool的值设置为 eval-source-map<br>好处：可以精准定位到具体的错误行。</p>
+</li>
+<li><p>生产环境下：<br>建议关闭 Source Map或将 devtool的值设置为 nosources-source-map </p>
+<p>好处：防止源码泄露，提高网站的安全性。</p>
+</li>
+</ul>
+<ol start="5">
+<li>webpack - watch</li>
+</ol>
+<p>使用watch mode(观察模式)</p>
+<p>直接执行yarn build命令的话，就是执行一次编译一次, 多次调试会显得很麻烦,  我们可以配置watch模式,  来监视项目中的文件更改，并在文件更改时重新编译; </p>
+<p>换句话说，修改了内容之后只要刷新浏览器就可以看到最新的效果,  不需要再手动执行yarn build命令重新编译了。</p>
+<ol>
+<li><p>运行时在命令后面加–watch</p>
+<p> yarn build –watch</p>
+</li>
+<li><p>webpack.config.js中配置</p>
+<p> module.exports &#x3D; {<br>   watch: true, &#x2F;&#x2F; 启用 watch 模式<br>   watchOptions: {<br> &#x2F;&#x2F; 忽略监视node_modules文件夹中的内容变化<br> ignored: &#x2F;node_modules&#x2F;,<br>   }<br> }</p>
+</li>
+</ol>
+<p>执行一次编译多次</p>
+<p>只要你修改了相关的文件，就会重新触发编译。这个比较适合多次反复调试的情况。</p>
+<h2 id="6-webpack-开发服务器"><a href="#6-webpack-开发服务器" class="headerlink" title="6. webpack - 开发服务器"></a>6. webpack - 开发服务器</h2><p>6.1 webpack-dev-server自动刷新</p>
+<ol>
+<li><p>下载</p>
+<p> yarn add webpack-dev-server -D</p>
+</li>
+<li><p>配置scripts</p>
+<p> “scripts”: {<br> “build”: “webpack –config webpack.config.js”,<br> “dev”: “webpack serve –config webpack.config.js”<br> }</p>
+</li>
+</ol>
+<p>6.2 webpack-dev-server 的配置</p>
+<p>webpack-dev-server配置文档:  <a target="_blank" rel="noopener" href="https://webpack.docschina.org/configuration/dev-server/#devserverafter">https://webpack.docschina.org/configuration/dev-server/#devserverafter</a></p>
+<pre><code>devServer: &#123;
+  port: 3000, // 端口号
+  open: true // 自动打开浏览器
+&#125;
+</code></pre>
+<p>webpack-dev-server和watch的区别:</p>
+<p>webpack-der-server 监测到代码变化后，浏览器可以看到及时更新的效果，但是并没有自动打包修改的代码</p>
+<p>yarn build –watch 在监测到代码变化后自动打包修改的代码</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://cxman1.github.io">陈曦BlogTour💕</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://cxman1.github.io/2022/08/10/%E5%B7%A5%E5%85%B7%E7%AF%87/ES6%E7%9A%84%E6%A8%A1%E5%9D%97%E5%8C%96/">https://cxman1.github.io/2022/08/10/%E5%B7%A5%E5%85%B7%E7%AF%87/ES6%E7%9A%84%E6%A8%A1%E5%9D%97%E5%8C%96/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://cxman1.github.io" target="_blank">陈曦BlogTour🎶</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://img.tt98.com/d/file/tt98/20200417150010422/5e9951277b82a.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/07/30/%E5%89%8D%E7%AB%AF%E7%AF%87/%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0%E4%B9%8B%E6%9F%AF%E9%87%8C%E5%8C%96/"><img class="next-cover" src="https://s1.1zoom.me/big0/930/Vocaloid_Hatsune_Miku_450970.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">高阶函数之柯里化</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.ibb.co/hcyLmbS/cy.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">陈曦BlogTour💕</div><div class="author-info__description">欢迎访问小窝,Welcome to my blog😊</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">36</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/cxman1"><i class="fab fa-github"></i><span>关注</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/cxman1" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:13247579414@163.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://music.163.com/#/playlist?id=512748727" target="_blank" title="歌单"><i class="fa-solid fa-music"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的博客,平时分享一些资源,互相交流一下心得!上方的导航栏可以访问我分享的动漫、歌单、MV等资源......这里有我的联系方式QQ&WeChat:1969301206😶‍🌫️</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-ES6-%E6%A8%A1%E5%9D%97%E5%8C%96"><span class="toc-text">1. ES6 模块化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96%E7%9A%84%E5%88%86%E7%B1%BB-%E4%BA%86%E8%A7%A3"><span class="toc-text">1.2 前端模块化的分类 (了解)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-%E4%BB%80%E4%B9%88%E6%98%AF-ES6-%E6%A8%A1%E5%9D%97%E5%8C%96%E8%A7%84%E8%8C%83-%E7%BB%9F%E4%B8%80"><span class="toc-text">1.3 什么是 ES6 模块化规范 (统一)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-%E6%A8%A1%E5%9D%97%E5%8C%96%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="toc-text">1.5 模块化的基本语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-2-%E6%8C%89%E9%9C%80%E5%AF%BC%E5%85%A5%E4%B8%8E%E6%8C%89%E9%9C%80%E5%AF%BC%E5%87%BA"><span class="toc-text">1.5.2 按需导入与按需导出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%89%8D%E7%BD%AE-yarn-%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8"><span class="toc-text">2. 前置 - yarn 包管理器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-webpack%E6%A6%82%E8%BF%B0"><span class="toc-text">3. webpack概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-webpack-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="toc-text">3.2 webpack - 基本使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-webpack-%E6%89%93%E5%8C%85%E6%BC%94%E7%A4%BA"><span class="toc-text">3.3 webpack 打包演示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-package-json-%E4%B8%AD-scripts%E7%9A%84%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E"><span class="toc-text">3.4 package.json 中 scripts的使用说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-5-%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE-%E9%85%8D%E7%BD%AE%E5%85%A5%E5%8F%A3%E5%87%BA%E5%8F%A3%E6%A8%A1%E5%BC%8F"><span class="toc-text">3.5 基本配置 - 配置入口出口模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-7-2-webpack%E4%B8%AD%E5%A4%84%E7%90%86-css-%E6%96%87%E4%BB%B6-css-loader"><span class="toc-text">3.7.2 webpack中处理 css 文件 - css-loader</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-9-webpack-%E4%BD%BF%E7%94%A8-babel-%E5%A4%84%E7%90%86%E9%AB%98%E7%89%88%E6%9C%AC%E7%9A%84-js-%E8%AF%AD%E6%B3%95"><span class="toc-text">3.9 webpack 使用 babel 处理高版本的 js 语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-%E4%BB%80%E4%B9%88%E6%98%AFSource-Map"><span class="toc-text">4.1 什么是Source Map?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-4-Source-Map-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5"><span class="toc-text">4.4 Source Map 的最佳实践</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-webpack-%E5%BC%80%E5%8F%91%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-text">6. webpack - 开发服务器</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/08/10/%E5%B7%A5%E5%85%B7%E7%AF%87/ES6%E7%9A%84%E6%A8%A1%E5%9D%97%E5%8C%96/" title="ES6模块化语法"><img src="https://img.tt98.com/d/file/tt98/20200417150010422/5e9951277b82a.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ES6模块化语法"/></a><div class="content"><a class="title" href="/2022/08/10/%E5%B7%A5%E5%85%B7%E7%AF%87/ES6%E7%9A%84%E6%A8%A1%E5%9D%97%E5%8C%96/" title="ES6模块化语法">ES6模块化语法</a><time datetime="2022-08-09T17:05:16.000Z" title="发表于 2022-08-10 01:05:16">2022-08-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/30/%E5%89%8D%E7%AB%AF%E7%AF%87/%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0%E4%B9%8B%E6%9F%AF%E9%87%8C%E5%8C%96/" title="高阶函数之柯里化"><img src="https://s1.1zoom.me/big0/930/Vocaloid_Hatsune_Miku_450970.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="高阶函数之柯里化"/></a><div class="content"><a class="title" href="/2022/07/30/%E5%89%8D%E7%AB%AF%E7%AF%87/%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0%E4%B9%8B%E6%9F%AF%E9%87%8C%E5%8C%96/" title="高阶函数之柯里化">高阶函数之柯里化</a><time datetime="2022-07-30T08:34:13.000Z" title="发表于 2022-07-30 16:34:13">2022-07-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/30/%E5%89%8D%E7%AB%AF%E7%AF%87/vue/vue%E4%B9%8Bvuex%E6%A8%A1%E5%9D%97%E5%8C%96%E7%AE%A1%E7%90%86/" title="vue之vuex模块化管理"><img src="https://s1.1zoom.me/b5050/610/350394-sepik_1920x1080.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="vue之vuex模块化管理"/></a><div class="content"><a class="title" href="/2022/07/30/%E5%89%8D%E7%AB%AF%E7%AF%87/vue/vue%E4%B9%8Bvuex%E6%A8%A1%E5%9D%97%E5%8C%96%E7%AE%A1%E7%90%86/" title="vue之vuex模块化管理">vue之vuex模块化管理</a><time datetime="2022-07-30T08:11:18.000Z" title="发表于 2022-07-30 16:11:18">2022-07-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/30/%E5%89%8D%E7%AB%AF%E7%AF%87/javascript/javascript%E4%B9%8Btry-catch-%E4%BD%BF%E7%94%A8/" title="javascript之try...catch...使用"><img src="http://cdn.wallpapername.com/1440x830/20121102/vocaloid%20hatsune%20miku%20love%20is%20war%20armbands%201440x830%20wallpaper_www.wallpapername.com_73.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="javascript之try...catch...使用"/></a><div class="content"><a class="title" href="/2022/07/30/%E5%89%8D%E7%AB%AF%E7%AF%87/javascript/javascript%E4%B9%8Btry-catch-%E4%BD%BF%E7%94%A8/" title="javascript之try...catch...使用">javascript之try...catch...使用</a><time datetime="2022-07-30T08:06:25.000Z" title="发表于 2022-07-30 16:06:25">2022-07-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/30/%E5%89%8D%E7%AB%AF%E7%AF%87/javascript/vue%E4%B9%8B%E8%A7%A3%E6%9E%90Excel%E8%A1%A8%E6%A0%BC/" title="vue之解析Excel表格"><img src="https://s1.1zoom.me/big0/486/372822-blackangel.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="vue之解析Excel表格"/></a><div class="content"><a class="title" href="/2022/07/30/%E5%89%8D%E7%AB%AF%E7%AF%87/javascript/vue%E4%B9%8B%E8%A7%A3%E6%9E%90Excel%E8%A1%A8%E6%A0%BC/" title="vue之解析Excel表格">vue之解析Excel表格</a><time datetime="2022-07-30T08:05:50.000Z" title="发表于 2022-07-30 16:05:50">2022-07-30</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By 陈曦BlogTour💕</div><div class="footer_custom_text">开启博客之旅,记录美好生活😊</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'cloudbase-baas-0gnz9jp6790703e1',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'cloudbase-baas-0gnz9jp6790703e1',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    GLOBAL_CONFIG_SITE.isPost && getCount()
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><div class="aplayer no-destroy" data-id="60198" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="false" data-theme:"#A6FFFF"> </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"right","width":150,"height":400,"hOffset":100,"vOffset":-30},"mobile":{"show":true}});</script></body></html>
